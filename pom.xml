@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2015-2020 hexosse <hexosse@gmail.com>
+
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Artifact properties -->
+    <groupId>com.github.hexocraft</groupId>
+    <artifactId>hexocraft-bukkit-parent</artifactId>
+    <version>1</version>
+    <packaging>pom</packaging>
+
+    <!-- parent pom -->
+    <parent>
+        <groupId>com.github.hexocraft</groupId>
+        <artifactId>hexocraft-parent</artifactId>
+        <version>4</version>
+    </parent>
+
+    <!-- Description -->
+    <name>Hexocraft Parent POM</name>
+    <description>Hexocraft Bukkit Parent POM provides common settings for all Hexocraft bukkit projects.</description>
+    <url>https://github.com/hexocraft/hexocraft-bukkit-parent</url>
+
+    <!-- Organization -->
+    <organization>
+        <name>Hexocraft</name>
+        <url>https://github.com/hexocraft</url>
+    </organization>
+
+    <!-- Want to contribute? Anybody is welcome -->
+    <developers>
+        <developer>
+            <id>hexosse</id>
+            <name>hexosse</name>
+            <url>https://github.com/hexosse</url>
+        </developer>
+    </developers>
+
+    <!-- License -->
+    <licenses>
+        <license>
+            <name>Apache-2.0</name>
+            <url>https://www.opensource.org/licenses/Apache-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- Source control manager -->
+    <scm>
+        <connection>scm:git:git://github.com/hexocraft/hexocraft-bukkit-parent.git</connection>
+        <developerConnection>scm:git:ssh://github.com:hexocraft/hexocraft-bukkit-parent.git</developerConnection>
+        <url>http://github.com/hexocraft/hexocraft-bukkit-parent</url>
+    </scm>
+
+    <!-- Issue management -->
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/hexocraft/hexocraft-bukkit-parent/issues</url>
+    </issueManagement>
+
+    <!-- Project properties -->
+    <properties>
+
+        <!-- Bukkit versions -->
+        <bukkit.current>${bukkit.latest}</bukkit.current>
+        <bukkit.1.8.3>1.8.3-R0.1-SNAPSHOT</bukkit.1.8.3>
+        <bukkit.1.8.8>1.8.8-R0.1-SNAPSHOT</bukkit.1.8.8>
+        <bukkit.1.9.4>1.9.4-R0.1-SNAPSHOT</bukkit.1.9.4>
+        <bukkit.1.10.2>1.10.2-R0.1-SNAPSHOT</bukkit.1.10.2>
+        <bukkit.1.11.2>1.11.2-R0.1-SNAPSHOT</bukkit.1.11.2>
+        <bukkit.1.12.2>1.12.2-R0.1-SNAPSHOT</bukkit.1.12.2>
+        <bukkit.1.13.2>1.13.2-R0.1-SNAPSHOT</bukkit.1.13.2>
+        <bukkit.1.14.4>1.14.4-R0.1-SNAPSHOT</bukkit.1.14.4>
+        <bukkit.1.15.2>1.15.2-R0.1-SNAPSHOT</bukkit.1.15.2>
+        <bukkit.1.16.4>1.16.4-R0.1-SNAPSHOT</bukkit.1.16.4>
+        <bukkit.latest>${bukkit.1.16.4}</bukkit.latest>
+
+        <!-- Commonly used external bukkit libraries -->
+        <vaultApi.version>1.7</vaultApi.version>
+
+        <!-- External libs dependencies -->
+        <commands.version>0.5.0-SNAPSHOT</commands.version>                             <!-- https://github.com/aikar/commands -->
+        <configuration.version>1.0.0-SNAPSHOT</configuration.version>                   <!-- https://github.com/HexoCraft/configuration -->
+        <kyori.adventure.version>4.0.0-SNAPSHOT</kyori.adventure.version>               <!-- https://github.com/KyoriPowered/adventure-platform -->
+        <kyori.event.version>4.0.0-SNAPSHOT</kyori.event.version>                       <!-- https://github.com/KyoriPowered/event -->
+        <taskchain.version>3.7.2</taskchain.version>                                    <!-- https://github.com/aikar/TaskChain -->
+
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>aikar</id>
+            <url>https://repo.aikar.co/content/groups/aikar/</url>
+        </repository>
+        <repository>
+            <id>vault</id>
+            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+        </repository>
+    </repositories>
+
+    <!-- Project and sub-project dependencies -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- ++++++++++++++++++++ Bukkit / Spigot +++++++++++++++++++++ -->
+            <!-- Bukkit -->
+            <dependency>
+                <groupId>org.bukkit</groupId>
+                <artifactId>bukkit</artifactId>
+                <version>${bukkit.current}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- Craftbukkit -->
+            <dependency>
+                <groupId>org.bukkit</groupId>
+                <artifactId>craftbukkit</artifactId>
+                <version>${bukkit.current}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- Spigot-API -->
+            <dependency>
+                <groupId>org.spigotmc</groupId>
+                <artifactId>spigot-api</artifactId>
+                <version>${bukkit.current}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- Spigot -->
+            <dependency>
+                <groupId>org.spigotmc</groupId>
+                <artifactId>spigot</artifactId>
+                <version>${bukkit.current}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- ++++++++++++++++++++ Bukkit libraries ++++++++++++++++++++ -->
+            <!-- Vault : https://github.com/MilkBowl/VaultAPI -->
+            <dependency>
+                <groupId>net.milkbowl.vault</groupId>
+                <artifactId>VaultAPI</artifactId>
+                <version>${vaultApi.version}</version>
+            </dependency>
+
+
+            <!-- +++++++++++++++ Common libs dependencies +++++++++++++++ -->
+            <!-- Guava : https://mvnrepository.com/artifact/com.google.guava/guava-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+            </dependency>
+
+
+            <!-- +++++++++++++++ External libs dependencies +++++++++++++++ -->
+            <!-- Commands : https://github.com/aikar/commands -->
+            <dependency>
+                <groupId>co.aikar</groupId>
+                <artifactId>acf-core</artifactId>
+                <version>${commands.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>co.aikar</groupId>
+                <artifactId>acf-bukkit</artifactId>
+                <version>${commands.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>co.aikar</groupId>
+                <artifactId>acf-paper</artifactId>
+                <version>${commands.version}</version>
+            </dependency>
+            <!-- configurate : https://github.com/SpongePowered/Configurate -->
+            <dependency>
+                <groupId>org.spongepowered</groupId>
+                <artifactId>configurate-core</artifactId>
+                <version>${configurate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.spongepowered</groupId>
+                <artifactId>configurate-gson</artifactId>
+                <version>${configurate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.spongepowered</groupId>
+                <artifactId>configurate-hocon</artifactId>
+                <version>${configurate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.spongepowered</groupId>
+                <artifactId>configurate-yaml</artifactId>
+                <version>${configurate.version}</version>
+            </dependency>
+            <!-- configuration : https://github.com/HexoCraft/configuration -->
+            <dependency>
+                <groupId>com.github.hexocraft</groupId>
+                <artifactId>configuration-core</artifactId>
+                <version>${configuration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hexocraft</groupId>
+                <artifactId>configuration-gson</artifactId>
+                <version>${configuration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hexocraft</groupId>
+                <artifactId>configuration-hocon</artifactId>
+                <version>${configuration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hexocraft</groupId>
+                <artifactId>configuration-xml</artifactId>
+                <version>${configuration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hexocraft</groupId>
+                <artifactId>configuration-yaml</artifactId>
+                <version>${configuration.version}</version>
+            </dependency>
+            <!-- kyori adventure-platform : https://github.com/KyoriPowered/adventure -->
+            <dependency>
+                <groupId>net.kyori</groupId>
+                <artifactId>adventure-platform-bukkit</artifactId>
+                <version>${kyori.adventure.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.checkerframework</groupId>
+                        <artifactId>checker-qual</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- kyori event -->
+            <dependency>
+                <groupId>net.kyori</groupId>
+                <artifactId>event-api</artifactId>
+                <version>${kyori.event.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.checkerframework</groupId>
+                        <artifactId>checker-qual</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- Taskchain : https://github.com/aikar/TaskChain -->
+            <dependency>
+                <groupId>co.aikar</groupId>
+                <artifactId>taskchain-bukkit</artifactId>
+                <version>${taskchain.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Profiles -->
+    <profiles>
+
+        <!-- Spigot/Bukit 1.8.3 -->
+        <profile>
+            <id>MC-1.8.3</id>
+            <properties>
+                <bukkit.current>${bukkit.1.8.3}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.8.8 -->
+        <profile>
+            <id>MC-1.8.8</id>
+            <properties>
+                <bukkit.current>${bukkit.1.8.8}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.9.4 -->
+        <profile>
+            <id>MC-1.9.4</id>
+            <properties>
+                <bukkit.current>${bukkit.1.9.4}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.10.2 -->
+        <profile>
+            <id>MC-1.10.2</id>
+            <properties>
+                <bukkit.current>${bukkit.1.10.2}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.11.2 -->
+        <profile>
+            <id>MC-1.11.2</id>
+            <properties>
+                <bukkit.current>${bukkit.1.11.2}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.12.2 -->
+        <profile>
+            <id>MC-1.12.2</id>
+            <properties>
+                <bukkit.current>${bukkit.1.12.2}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.13.2 -->
+        <profile>
+            <id>MC-1.13.2</id>
+            <properties>
+                <bukkit.current>${bukkit.1.13.2}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.14.4 -->
+        <profile>
+            <id>MC-1.14.4</id>
+            <properties>
+                <bukkit.current>${bukkit.1.14.4}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.15.2 -->
+        <profile>
+            <id>MC-1.15.2</id>
+            <properties>
+                <bukkit.current>${bukkit.1.15.2}</bukkit.current>
+            </properties>
+        </profile>
+
+        <!-- Spigot/Bukit 1.16.4 -->
+        <profile>
+            <id>MC-1.16.4</id>
+            <properties>
+                <bukkit.current>${bukkit.1.16.4}</bukkit.current>
+            </properties>
+        </profile>
+
+    </profiles>
+</project>
