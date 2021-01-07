@@ -25,14 +25,14 @@
     <!-- Artifact properties -->
     <groupId>com.github.hexocraft</groupId>
     <artifactId>hexocraft-bukkit-parent</artifactId>
-    <version>5</version>
+    <version>6</version>
     <packaging>pom</packaging>
 
     <!-- parent pom -->
     <parent>
         <groupId>com.github.hexocraft</groupId>
         <artifactId>hexocraft-parent</artifactId>
-        <version>10</version>
+        <version>11</version>
     </parent>
 
     <!-- Description -->
